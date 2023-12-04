@@ -1,0 +1,77 @@
+body{
+    background-color: #282633;
+    font-style: italic;
+    color: #EB515C;
+    outline-color: wheat;
+}
+input {
+    color: wheat;
+    background-color: #282633;
+}
+header{
+    background-color: #282633;
+}
+a{
+    color: #EB515C;
+    text-decoration: None;
+}
+a:hover{
+    color: wheat;
+}
+
+.nothing .fora_div{
+    background-color: #282633;
+    color: #EB515C;
+
+}
+header{
+    position: sticky;
+    position: -webkit-sticky;
+    justify-content: center;
+    top: 0;
+    width: auto;
+    height: 150px;
+}
+
+.categ {
+    color: #EB515C;
+    text-decoration: None;
+}
+.kontrola{
+    color: wheat;
+}
+
+
+
+
+
+@media print{
+    body {
+        background-color: white !important;
+        text-decoration-color: black !important;
+
+    }
+    header{
+        display: None !important;
+    }
+
+    button {
+        color: #000000 !important;
+        background-color: white !important;
+    }
+    .button{
+        display: none !important;
+    }
+    .nothing{
+        color: #000000;
+        background-color: white !important;
+    }
+    .fora_div{
+        color: #000000 !important;
+        background-color: white !important;
+    }
+    span{
+        color: #000000 !important;
+        background-color: white !important;
+    }
+}

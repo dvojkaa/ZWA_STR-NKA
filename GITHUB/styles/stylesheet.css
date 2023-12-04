@@ -1,0 +1,395 @@
+
+
+
+
+
+/*header*/
+.logo{
+    float: none;
+    width: 240px;
+    height: 133px;
+}
+
+.wrap{
+
+    position: sticky;
+    display: block;
+    width: 100%;
+
+}
+#search-form input{
+    width: 100%;
+    height: 30px;
+    margin-left: -200px;
+    flex-shrink: 1;
+    flex-grow: 1;
+}
+.Search form{
+    margin-left: 375px;
+    margin-top: -129px;
+}
+
+
+
+#livesearch {
+    position: absolute;
+    height: auto;
+    width: 300px;
+    display: flex;
+    display: -webkit-flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    flex-direction: row;
+    background-color: wheat;
+    margin-top: 40px;
+}
+
+
+.searchform {
+    position: relative;
+    display: inline-block;
+    margin-right: 10px;
+
+}
+
+
+.searchform button {
+    background-color: wheat;
+    border: none;
+    cursor: pointer;
+    color: blue;
+    text-decoration: underline;
+}
+
+
+
+
+
+
+#rezim{
+    background: none;
+    border: none;
+    cursor: pointer;
+    margin-bottom: -5px;
+    height: 20px;
+    width: 20px;
+}
+
+.logout{
+    float: right;
+
+}
+
+.hlavnimenu{
+
+    display: -webkit-flex;
+    display: flex;
+    flex-direction: row;
+    align-content: space-around;
+    justify-content: space-evenly;
+    width: 60%;
+    margin: 10px auto 0 auto;
+    padding: 0;
+
+
+}
+li.hlavnimenu{
+    /*padding: 0 20px;*/
+    margin: 0;
+}
+
+#login-form{
+    padding-top: 10px;
+    padding-right: 20px;
+    background: none;
+}
+
+
+header #login-box > strong {
+    /*line-height: 22px;*/
+    /*margin-top: 10px;*/
+    padding: 0 100px;
+    font-size: 30px;
+
+
+}
+#login-box{
+    text-align: right ;
+    top: 0;
+    margin-top: -80px;
+
+}
+
+#hlavniblok{
+    margin-left: auto;
+    margin-right: auto;
+    width: 855px;
+    top:0;
+}
+
+
+
+
+
+
+/*categ*/
+
+h2.categ{
+    margin: auto;
+}
+.nothing{
+    height: 150px;
+    width: 150px;
+    background: #282633;
+
+}
+.categ_form{
+    display: flex;
+    display: -webkit-flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+.categ{
+    margin: 0 10px;
+    display: flex;
+    display: -webkit-flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-content: center;
+    justify-content: center;
+    width: 200px;
+    height: 50px;
+}
+
+
+
+
+
+.button {
+    width:auto;
+    padding: 5px;
+    background:linear-gradient(to bottom, #EB510F 0%, #EB515C 100%);
+    box-shadow:none;
+    margin: 5px;
+    cursor: pointer;
+    color: black;
+    border-radius: 60%;
+
+}
+div strong{
+    /*line-height: 22px;*/
+    /*margin-top: 0;*/
+    /*padding: 0 100px;*/
+    /*opacity: 0.8;*/
+
+}
+
+.input-password{
+    padding-top: 5px;
+}
+
+
+.text{
+    padding-bottom: 10px;
+}
+.registrace{
+
+    width: 100%;
+}
+.registrace input{
+    height: 25px;
+    width: 500px;
+    margin-right: 10%;
+    float: right;
+    display: flex;
+    display: -webkit-flex;
+    flex-direction: row;
+}
+
+.kontrola {
+    height: 25px;
+    width: 500px;
+    margin-bottom: 4%;
+    padding-left: 20%;
+}
+
+.forum{
+    display: flex;
+    display: -webkit-flex;
+    flex-direction: row;
+    text-align: center;
+    justify-content: center;
+}
+
+.forum input{
+    height: 25px;
+    width: 500px;
+    display: flex;
+    display: -webkit-flex;
+    flex-direction: row;
+    /*margin-left: 40%;*/
+    text-align: left;
+    margin-top: 2%;
+}
+
+
+
+.categ_f{
+    margin-left: 40%;
+    display: flex;
+    display: -webkit-flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-content: center;
+    justify-content: center;
+    width: 200px;
+    height: 50px;
+}
+.categ_radio{
+    display: flex;
+    display: -webkit-flex;
+    flex-direction: row;
+    text-align: center;
+    justify-content: center;
+}
+.create{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+}
+#text_form{
+    height: 100px;
+    width: 1000px;
+    display: flex;
+    display: -webkit-flex;
+}
+
+.fora {
+    height: 150px;
+    width: 150px;
+    display: flex;
+    display: -webkit-flex;
+    margin: 10px 10px 10px 10px;
+    flex-direction: row;
+}
+.fora_div{
+    display: flex;
+    display: -webkit-flex;
+    flex-direction: column;
+    margin-bottom: 2px;
+    flex-wrap: wrap;
+    -webkit-flex-wrap: wrap;
+    align-content: center;
+    justify-content: center;
+    align-items: center;
+}
+.h3{
+    font-size: 1.2em;
+    font-weight:bold;
+}
+
+.addten{
+    float: right;
+    height: 40px;
+    width: 100px;
+}
+
+.reqa{
+    border: 2px solid #EB515C;
+}
+
+
+
+
+
+.p{
+   margin-left: -150px;
+}
+.form{
+    display: flex;
+    display: -webkit-flex;
+    flex-direction: column;
+    text-align: center;
+    justify-content: center;
+}
+.back{
+    height: 50px;
+    width: 200px;
+    display: flex;
+    float: right;
+    justify-content: space-around;
+}
+
+.last{
+    float: right;
+    margin-right: 20%;
+}
+.main-text{
+    margin: 100px 100px 100px 100px;
+}
+fieldset{
+    padding: 10px 10px 10px 10px;
+    margin-top: 10px;
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+    justify-content: space-around;
+
+}
+.hide{
+    display: none;
+}
+
+.single{
+    display: flex;
+    margin-bottom: 10%;
+
+}
+#profil{
+    float: none;
+    width: 225px;
+    height: 225px;
+    max-width: 225px;
+    max-height: 225px;
+}
+
+
+
+
+
+/*
+
+ */
+
+@media print{
+    body {
+        background-color: white !important;
+        text-decoration-color: black !important;
+
+    }
+    header{
+        display: None !important;
+    }
+
+    button {
+        color: #000000 !important;
+        background-color: white !important;
+    }
+    .button{
+        display: none !important;
+    }
+    .nothing{
+        color: #000000;
+        background-color: white !important;
+    }
+    .fora_div{
+        color: #000000 !important;
+        background-color: white !important;
+    }
+    span{
+        color: #000000 !important;
+        background-color: white !important;
+    }
+}

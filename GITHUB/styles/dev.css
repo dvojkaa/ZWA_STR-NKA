@@ -1,0 +1,190 @@
+.dark-mode {
+    background-color: wheat !important;
+    color: #000000 !important;
+
+
+}
+
+body{
+    background-color: #282633;
+    font-style: italic;
+    color: #EB515C;
+}
+
+input {
+    color: white;
+}
+#logo{
+    float: none;
+}
+
+#pic{
+    width: 200px;
+    height: 300px;
+}
+
+#hlavniblok{
+    margin-left: auto;
+    margin-right: auto;
+    width: 855px;
+    top:0;
+}
+#hlavniblok a:hover{
+    color: white;
+}
+.wrap{
+    position: sticky;
+    display: block;
+    width: 100%;
+//height: 20vh;
+
+}
+#search-form input{
+    width: 100%;
+    height: 30px;
+    margin-left: -200px;
+}
+.Search form{
+    margin-left: 375px;
+    margin-top: -129px;
+    position: center;
+}
+#rezim{
+    background: none;
+    border: none;
+    cursor: pointer;
+    width: fit-content;
+    margin-bottom: -5px;
+}
+
+
+
+header{
+    position: sticky;
+    position: -webkit-sticky;
+    top: 0;
+    background-color: #282633;
+}
+
+.hlavnimenu{
+    display: -webkit-inline-flex;
+    display: inline-flex;
+    align-content: space-around;
+    justify-content: center;
+    margin: 10px 12px 14px 64px
+}
+
+
+
+
+
+.button {
+    width:auto;
+    padding: 5px;
+    background:linear-gradient(to bottom, #EB510F 0%, #EB515C 100%);
+    box-shadow:none;
+    margin: 5px;
+    cursor: pointer;
+    color: black;
+
+}
+div strong{
+    line-height: 22px;
+    margin-top: 0;
+    padding: 0 100px;
+    opacity: 0.8;
+    font-size: 30px;
+}
+#login-form{
+    padding-top: 10px;
+    padding-right: 20px;
+    background: none;
+}
+.input-password{
+    padding-top: 5px;
+}
+header #login-box {
+    float: right;
+    padding-right: 10px;
+}
+header #login-box > strong {
+    line-height: 22px;
+    margin-top: 10px;
+    padding: 0 100px;
+    opacity: 0.8;
+    background: none;
+
+}
+#login-box{
+    text-align: right ;
+    top: 0;
+    margin-top: -140px;
+    background: none;
+
+}
+
+
+
+
+
+
+
+#zapomen-form{
+
+//color: #EB515C;
+    padding: 10px 2px;
+}
+#zapomen-form input{
+    padding: 2px 5px;
+}
+a{
+    color: #EB515C;
+    text-decoration: none;
+}
+
+.text{
+    padding-bottom: 10px;
+}
+.registrace{
+//color: #EB515C;
+    width: 100%;
+}
+.registrace input{
+    height: 25px;
+    width: 500px;
+    color: white;
+    border: 2px solid #EB515C;
+    margin-bottom: 4%;
+    margin-right: 10%;
+    float: right;
+//font-size: 18px;
+}
+
+#last{
+    float: right;
+    margin-right: 10%;
+    margin-top: -2%;
+}
+.registration a:hover{
+    color: white;
+}
+.main-text{
+    margin: 100px 100px 100px 100px;
+}
+fieldset{
+    padding: 10px 10px 10px 10px;
+}
+
+
+
+
+
+
+
+@media print{
+    body {
+        background-color: white;
+        color: black;
+    }
+
+}

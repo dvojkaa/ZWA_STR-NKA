@@ -1,0 +1,77 @@
+body{
+    background-color: wheat;
+    font-style: italic;
+    color: #282633;
+    outline-color: #282633;
+}
+input{
+    background-color: wheat;
+    color: #282633;
+}
+header{
+    background-color: wheat;
+}
+a{
+    color: #282633;
+    text-decoration: None;
+}
+a:hover{
+    color: #EB515C;
+}
+.nothing {
+    background-color: wheat;
+    color: #282633;
+
+}
+.fora_div{
+    color: #282633;
+}
+header{
+    justify-content: center;
+    top: 0;
+    width: auto;
+
+    height: 150px;
+}
+.categ{
+    color: #282633;
+    text-decoration: None;
+}
+.single {
+    border: 2px solid black;
+}
+.kontrola{
+    color: #282633;
+}
+
+
+@media print{
+    body {
+        background-color: white !important;
+        text-decoration-color: black !important;
+
+    }
+    header{
+        display: None !important;
+    }
+
+    button {
+        color: #000000 !important;
+        background-color: white !important;
+    }
+    .button{
+        display: none !important;
+    }
+    .nothing{
+        color: #000000;
+        background-color: white !important;
+    }
+    .fora_div{
+        color: #000000 !important;
+        background-color: white !important;
+    }
+    span{
+        color: #000000 !important;
+        background-color: white !important;
+    }
+}
