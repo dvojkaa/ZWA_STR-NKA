@@ -30,7 +30,17 @@ include("header.php");
 
 ?>
 
-<form class="form_div" action="../pages/create_forum.php" method="post" onsubmit=" return userKontr();">
+<form class="form_div" action="../pages/create_forum.php" method="post">
+<!--    onsubmit=" return userKontr();"-->
+    <script>
+        let sfora = document.getElementsByClassName("fora_div");
+        Array.from(sfora).forEach(element => {
+            element.addEventListener("submit", function (event) {
+                if (!userKontr()) {
+                    event.preventDefault();
+                }
+            });
+        });</script>
     <table class="create">
         <tr class="forum">
             <td>Give your form name: <label for="username"></label><input type="text" id="username" required class="reqa" name="name_form" value="<?php if(isset($_POST["submit_form"])){  $name = htmlspecialchars($_POST["name_form"]); $name = mysqli_real_escape_string($connection, $name); echo $name;}?>" autocapitalize="on" autofocus placeholder="Name"><p><?php  if(isset($_POST["submit_form"])){if( strlen($name) > 30){ echo "Wrong input or lenght (30Max)";}} ?></p></td>

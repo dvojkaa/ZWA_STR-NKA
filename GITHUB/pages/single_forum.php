@@ -45,11 +45,24 @@ if(isset($_POST["delete_for"])) {
 
 
                     $username = $_SESSION["username"];
+//                    onsubmit=" return userKontr();"
 
-                    echo '<form class="fora_div" action="../pages/single_forum.php" method="post" onsubmit=" return userKontr();">
-                       <label><input type="text" id="username" name="name_form" value=' .$name_single .'></label>
+                    echo '<form class="fora_div" id="single-fora" action="../pages/single_forum.php" method="post">
+                        <script>
+                        let sfora = document.getElementsByClassName("fora_div");
+Array.from(sfora).forEach(element => {
+    element.addEventListener("submit", function (event) {
+        if (!userKontr()) {
+            event.preventDefault();
+        }
+    });
+});
+</script>
+                        <p>' .$name_single .'</p>
+                       <label><input type="text" id="username" name="name_form" placeholder="Name"></label>
                        <p class="kontrola" id="username-error"></p>
-                       <label><input type="text" id="text_form"  name="text_form" placeholder=' .$text_single .'></label>
+                       <p>' .$text_single .'</p>
+                       <label><input type="text" id="text_form"  name="text_form" placeholder="Here you can update your text"></label>
                        <label><input type="hidden" id="id_form" name="id" value=' .$idses .'></label>
                        <input type="hidden" name="csrf_token" value="'. $_SESSION["csrf_token"] .'">
                        <button type="submit" name="update_for" class="button">Update </button></form>

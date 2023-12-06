@@ -54,7 +54,16 @@ include("header.php");
 </form>
 
 
-<form class="form" action="my-account.php" method="post" onsubmit="validateForm()">
+<form class="form" id="myacc" action="my-account.php" method="post">
+<!--    onsubmit="validateForm()"-->
+    <script>
+        let resform = document.getElementById("myacc");
+        resform.addEventListener("submit", function (event) {
+            if (!validateFormm()) {
+                event.preventDefault();
+            }
+        });
+    </script>
     <table class="registrace">
         <tr>
             <td id="neco">Username <label for="fname">
@@ -117,12 +126,6 @@ include("header.php");
         ?>
     </fieldset>
 </div>
-<script>
-    function validateForm() {
-
-        return userKontr() && mailKontr() && passKontr();
-    }
-</script>
 </body>
 </html>
 

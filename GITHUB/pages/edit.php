@@ -44,7 +44,15 @@ include("header.php"); ?>
 
 
 <div class="main-text">
-<form class="form" action="../pages/edit.php" method="post" onsubmit="return categKontr()">
+<form class="form" id="cate-form" action="../pages/edit.php" method="post">
+<!--    onsubmit="return categKontr()"-->
+    <script>
+        let cateform = document.getElementById("cate-form");
+        cateform.addEventListener("submit", function (event) {
+            if (!categKontr()) {
+                event.preventDefault();
+            }
+        });</script>
     <table >
         <tr class="forum">
             <td>Give your categorie a name: <label>
@@ -61,7 +69,16 @@ include("header.php"); ?>
 </form>
 
 
-<form class="form" action="../pages/edit.php" method="post" onsubmit="return upCategKontr()">
+<form class="form" id="cate-form2" action="../pages/edit.php" method="post">
+<!--    onsubmit="return upCategKontr()"-->
+    <script>
+        let cateform2 = document.getElementById("cate-form2");
+        cateform2.addEventListener("submit", function (event) {
+            if (!upCategKontr()) {
+                event.preventDefault();
+            }
+        });
+    </script>
     <table >
         <tr class="forum">
             <p class="p">Update your categorie a name: </p>

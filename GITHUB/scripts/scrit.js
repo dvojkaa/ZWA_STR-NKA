@@ -2,15 +2,15 @@
 
 function showResult(searchValue) {
 
-    if (searchValue.length == 0) {
+    if (searchValue.length === 0) {
         document.getElementById("livesearch").innerHTML = "";
         document.getElementById("livesearch").style.border = "0px";
         return;
     }
 
-    var xmlhttp = new XMLHttpRequest();
+    let xmlhttp = new XMLHttpRequest();
     xmlhttp.onreadystatechange = function () {
-        if (this.readyState == 4 && this.status == 200) {
+        if (this.readyState === 4 && this.status === 200) {
             document.getElementById("livesearch").innerHTML = this.responseText;
             document.getElementById("livesearch").style.border = "1px solid #A5ACB2";
         }
@@ -27,7 +27,7 @@ function categKontr(){
         error.innerHTML = "name field is empty!";
         return false;
     } else if (username.length < 3 || username.length > 30 || !/^[a-zA-Z]+$/.test(username)) {
-        error.innerHTML = "name field should be between 3 and 30 characters and should contain only letters!";
+        error.innerHTML = "Name field should be between 3 and 30 characters and should contain only letters!";
         return false;
     }
     error.innerHTML = "";
@@ -42,7 +42,7 @@ function upCategKontr(){
         error.innerHTML = "name field is empty!";
         return false;
     } else if (username.length < 3 || username.length > 30 || !/^[a-zA-Z]+$/.test(username)) {
-        error.innerHTML = "name field should be between 3 and 30 characters and should contain only letters!";
+        error.innerHTML = "Name field should be between 3 and 30 characters and should contain only letters!";
         return false;
     }
     error.innerHTML = "";
@@ -58,7 +58,7 @@ function userKontr() {
         error.innerHTML = "name field is empty!";
         return false;
     } else if (username.length < 3 || username.length > 30 || !/^[a-zA-Z]+$/.test(username)) {
-        error.innerHTML = "name field should be between 3 and 30 characters and should contain only letters!";
+        error.innerHTML = "Name field should be between 3 and 30 characters and should contain only letters!";
         return false;
     }
     error.innerHTML = "";
@@ -172,8 +172,21 @@ function setmyfunction(){
     }
 }
 
-setmyfunction();
-var a = document.getElementById("rezim")
+function validateForm() {
 
+    return nameKontr() && userKontr() && mailKontr() && ageKontr() && passKontr();
+}
+function validateFormm() {
+    return userKontr() && mailKontr() && passKontr();
+}
+
+setmyfunction();
+let a = document.getElementById("rezim");
 a.addEventListener("click", myFunction);
 
+
+
+let search = document.getElementById("search-input");
+search.addEventListener("keyup", function(){
+    showResult(search.value);
+});

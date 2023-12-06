@@ -25,7 +25,8 @@ if (!isset($_SESSION["csrf_token"])) {
 
                     <form method="post" action="index.php" id="search-form" >
                         <label for="search">
-                            <input type="text" placeholder="Search" name="search" onkeyup="showResult(this.value)"></label>
+                            <input type="text" placeholder="Search" name="search" id="search-input"></label>
+<!--                        onkeyup="showResult(this.value)"-->
                             <img src="../images/zlustymesic.jpeg" title="Change your theme" alt="Světly režim" id="rezim">
                      </form>
                 </div>
@@ -36,7 +37,7 @@ if (!isset($_SESSION["csrf_token"])) {
                         <li class="hlavnimenu"><a href="index.php">Home</a></li>
                         <li class=" <?php if (isset($_SESSION["class"])){echo 'hlavnimenu';}else{ echo'hide'; } ?>"><a href="create_forum.php">Create Forum</a></li>
                         <li class=" <?php if (isset($_SESSION["class"])){echo 'hlavnimenu';}else{ echo'hide'; } ?>"><a href="my-account.php">My Account</a></li>
-                        <li class=" <?php if(isset($_SESSION["class"])){if ($_SESSION["class"] == "admin"){echo 'hlavnimenu';}}else{ echo'hide'; } ?>"><a href="edit.php">Edit</a></li>
+                        <li class=" <?php if(isset($_SESSION["class"])){if ($_SESSION["class"] == "admin"){echo 'hlavnimenu';}else{ echo'hide'; }}else{ echo'hide'; } ?>"><a href="edit.php">Edit</a></li>
 
                 </ul>
                 <form action="logout.php" method="post"> <button type="submit" name="logout" class=" <?php
@@ -52,7 +53,16 @@ if (!isset($_SESSION["csrf_token"])) {
             }
             ?>" >
                 <strong class="toggle-login">Log in</strong>
-                <form id="login-form" action="index.php" method="post" onsubmit=" return mailKontr();">
+                <form id="login-form" action="index.php" method="post">
+<!--                    onsubmit=" return mailKontr();"-->
+                    <script>
+                        let logform = document.getElementById("login-form");
+                        logform.addEventListener("submit", function (event) {
+                            if (!mailKontr()) {
+                                event.preventDefault();
+                            }
+                        });
+                    </script>
                     <div class="input-user"><label for="default">E-amil </label><input type="email" required class="reqa" id="default" placeholder="E-mail" autocapitalize="off"  value="" name="mail"></div>
                     <div class="input-password"><label for="password">Password </label>
                         <input type="password" id="password" autocapitalize="off" placeholder="Password" required class="reqa" value="" name="password">

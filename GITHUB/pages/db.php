@@ -1,7 +1,9 @@
 <?php
 
 
-    // Establish connection to MySQL database
+/**
+ * Function to establish a connection to the MySQL database.
+ */
     function Connection(){
         global $connection;
         // Load database credentials from config file
@@ -17,6 +19,10 @@
             die("Error: Unable to connect to MySQL." . PHP_EOL);
         }
     }
+
+/**
+ * Function to check if a user is logged in; redirects to index.php if not.
+ */
     function IsLog(){
 
         if(!isset($_SESSION["class"])){
@@ -25,7 +31,9 @@
         }
     }
 
-    // This function adds a new forum post to the database
+/**
+ * Function to add a new forum post to the database.
+ */
     function AddForFun(){
         // Declare global connection variable
         global $connection;
@@ -89,7 +97,9 @@
         }
     }
 
-
+/**
+ * Function to add a new category to the database.
+ */
 function AddCateg(){
     // Establish connection to MySQL database
     global $connection;
@@ -128,7 +138,9 @@ function AddCateg(){
 }
 
 
-// Funkce na přidávání uzivatelů
+/**
+ * Function to add a new user to the database.
+ */
     function AddFunk(){
         global $connection;
         global $i;
@@ -230,7 +242,9 @@ function AddCateg(){
         }
     }
 
-
+/**
+ * Function to handle user login and set session variables.
+ */
     function LogFunk(){
         // Establish connection to MySQL database
         global $connection;
@@ -262,6 +276,9 @@ function AddCateg(){
         }
     }
 
+/**
+ * Function to update the name of a category in the database.
+ */
 function UpdateCatFun(){
     // Establish connection to MySQL database
     global $connection;
@@ -308,6 +325,16 @@ function UpdateCatFun(){
 
 
 
+
+
+
+
+
+// tady jsem skoncil
+
+/**
+ * Function to update the name and/or text of a forum post in the database.
+ */
 function UpdateForFun()
 {
     // Establish connection to MySQL database
@@ -365,7 +392,9 @@ function UpdateForFun()
 }
 
 
-    //Update funkce
+/**
+ * Function to update user information in the database.
+ */
     function UpdateFunk()
     {
 
@@ -461,6 +490,11 @@ function UpdateForFun()
         }else{echo "neco v pici ";}
     }
 
+
+/**
+ * Function to print category options in HTML form.
+ * @param string $set - Specifies whether the categories are used for creation or display.
+ */
 function PrintCatFun($set){
     global $connection;
 
@@ -504,6 +538,7 @@ function PrintCatFun($set){
 }
 
 
+
 function rintForFun($y) {
     global $connection;
     global $id;
@@ -543,7 +578,10 @@ function rintForFun($y) {
 
 
 
-
+/**
+ * Function to print forum posts based on different scenarios.
+ * @param int $y - Starting ID for fetching forum posts.
+ */
     function PrintForFun($y)
     {
         global $connection;
@@ -622,7 +660,9 @@ function rintForFun($y) {
     }
 
 
-
+/**
+ * Function to delete a category from the database.
+ */
     function DeleteCatFun()
     {
         global $connection;
@@ -639,6 +679,9 @@ function rintForFun($y) {
 
     }
 
+/**
+ * Function to delete a forum post from the database.
+ */
 function DeleteForFun()
 {
     global $connection;
@@ -661,7 +704,9 @@ function DeleteForFun()
 
 }
 
-
+/**
+ * Function to set a user's profile picture and update the database.
+ */
 function SetPic(){
 
     global $connection;
@@ -735,7 +780,10 @@ function SetPic(){
 
 }
 
-
+/**
+ * Function to retrieve the user's profile picture path.
+ * @return string - Path to the user's profile picture.
+ */
 function getPic(){
         global $connection;
         $id = $_SESSION["id"];
@@ -749,8 +797,13 @@ function getPic(){
 
 
 
-//Tady jsou Fuknce na kontroli rozuných parametru username, password, mail a age
-    function userKontr($username){
+/**
+ * Check and validate the given username.
+ *
+ * @param string $username The username to be validated.
+ * @return string Returns a message indicating the validation result.
+ */
+function userKontr($username){
         global $connection;
 
 
@@ -771,6 +824,12 @@ function getPic(){
         return "Username missing";
     }
 
+/**
+ * Validate the given name.
+ *
+ * @param string $name The name to be validated.
+ * @return string Returns a message indicating the validation result.
+ */
     function nameKontr($name){
 
         if($name) {
@@ -783,6 +842,13 @@ function getPic(){
         return "Name missing";
     }
 
+/**
+ * Check and validate passwords.
+ *
+ * @param string $password The password.
+ * @param string $com_password The confirmation password.
+ * @return bool Returns true if passwords match and meet length criteria, false otherwise.
+ */
     function passKontr($password, $com_password){
 
         if($password == $com_password && $password > 30 && 3 > $password){
@@ -791,7 +857,12 @@ function getPic(){
         return True;
     }
 
-
+/**
+ * Validate the given email.
+ *
+ * @param string $email The email to be validated.
+ * @return string Returns a message indicating the validation result.
+ */
     function mailKontr($email)
     {
         global $connection;
@@ -815,6 +886,12 @@ function getPic(){
         return("Mail missing");
     }
 
+/**
+ * Validate the given age.
+ *
+ * @param int $age The age to be validated.
+ * @return string Returns a message indicating the validation result.
+ */
     function ageKontr($age){
 
         if($age) {
@@ -827,6 +904,10 @@ function getPic(){
         return "Age missing";
     }
 
+/**
+ * Function to validate and sanitize the text input.
+ * @param string $text - The text input to be validated.
+ */
     function textKontr($text){
         if(htmlspecialchars($text)){
             echo "right ";

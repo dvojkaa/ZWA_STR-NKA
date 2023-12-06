@@ -35,7 +35,16 @@ if(isset($_POST["submitreg"])){
 <br>
     <fieldset>
         <div class="registrace">
-            <form class="form" id="registrationForm" action="resgistrace.php" method="post" onsubmit="return validateForm();">
+            <form class="form" id="registrationForm" action="resgistrace.php" method="post">
+<!--                onsubmit="return validateForm();"-->
+                <script>
+                    let resform = document.getElementById("registrationForm");
+                    resform.addEventListener("submit", function (event) {
+                        if (!validateForm()) {
+                            event.preventDefault();
+                        }
+                    });
+                </script>
                 <table class="registrace">
                 <tr>
                     <td id="neco">Name <label for="Firstname"></label><input type="text" id="Firstname" name="fname" value="<?php if(isset($_POST["submitreg"])){  $name = htmlspecialchars($_POST["fname"]); echo $name;} ?>" autocapitalize="on" autofocus placeholder="First name"></td>
@@ -83,11 +92,5 @@ if(isset($_POST["submitreg"])){
             </form>
         </div>
     </fieldset>
-<script>
-function validateForm() {
-
-return nameKontr() && userKontr() && mailKontr() && ageKontr() && passKontr();
-}
-</script>
 </body>
 </html>
