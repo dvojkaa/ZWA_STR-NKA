@@ -1,25 +1,22 @@
-<!DOCTYPE html>
-<html lang="en">
-
 <?php
 session_start();
 include "db.php";
 
 Connection();
 
-//if(isset($_POST["submitreg"])) {
-//    AddFunk();
-//}
 
-
-if(isset($_POST["submitreg"])){
-    if($_POST["csrf_token"] == $_SESSION["csrf_token"]){
+if (isset($_POST["submitreg"])) {
+    if ($_POST["csrf_token"] == $_SESSION["csrf_token"]) {
         AddFunk();
         unset($_SESSION["csrf_token"]);
     }
 }
 
 ?>
+
+<!DOCTYPE html>
+<html lang="en">
+
 <head>
 
     <?php include("head.php") ?>
@@ -28,7 +25,16 @@ if(isset($_POST["submitreg"])){
 <body>
 
 
-<?php  include("header.php");
+<?php
+include("header.php");
+
+
+//if(isset($_POST["submitreg"])) {
+//    AddFunk();
+//}
+
+
+
 
 ?>
 

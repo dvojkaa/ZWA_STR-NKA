@@ -6,8 +6,8 @@ include "db.php";
 Connection();
 
 
-if(isset($_POST["categorie"])){
-    $y = $_POST["categorie"];
+if(isset($_GET["categorie"])){
+    $y = $_GET["categorie"];
 
 }else{
     header("Location: index.php");
@@ -30,7 +30,7 @@ if(isset($_POST["categorie"])){
 ?>
 
 <div class="main-text">
-    <form method="post" action="categ.php" class="categ_form">
+    <form method="get" action="categ.php" class="categ_form">
         <?php
         PrintCatFun(0)
         ?>
@@ -38,16 +38,12 @@ if(isset($_POST["categorie"])){
     </form>
 <fieldset>
         <?php
-        global $set;
-        $set = "categ";
         $_SESSION["categ"] = $y;
-        PrintForFun($y);
+        PrintForFun("categ");
         ?>
 </fieldset>
 
-    <form method="post" action="index.php">
-    <button type="submit" class="button" >Go back to the main page </button>
-    </form>
+    <button type="submit" id="back" class="button" >Go back</button>
 </div>
 </body>
 </html>

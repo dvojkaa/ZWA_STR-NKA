@@ -88,9 +88,9 @@ while ($row = mysqli_fetch_assoc($result)) {
 
     /**
      * ID fora z výsledku vyhledávání.
-     * @var int $idfora
+     * @var int $id
      */
-    $idfora = $row['idfora'];
+    $id = $row['idfora'];
 
     /**
      * Název fora z výsledku vyhledávání.
@@ -99,8 +99,8 @@ while ($row = mysqli_fetch_assoc($result)) {
     $name = $row['name'];
 
     // Vytvoření formuláře s tlačítkem pro každý záznam.
-    $hint .= "<form method='post' class='searchform' action='single_forum.php'>
-                <button type='submit' name='idd' value='$idfora'>$name</button>
+    $hint .= "<form method='get' class='searchform' action='single_forum.php'>
+                <button type='submit' name='id' value='$id'>$name</button>
               </form><br/>";
     $i++;
 }

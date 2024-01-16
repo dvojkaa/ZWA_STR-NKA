@@ -1,5 +1,3 @@
-
-
 function showResult(searchValue) {
 
     if (searchValue.length === 0) {
@@ -20,7 +18,7 @@ function showResult(searchValue) {
     xmlhttp.send();
 }
 
-function categKontr(){
+function categKontr() {
     let username = document.getElementById("categname").value;
     let error = document.getElementById("categ-error");
     if (!username) {
@@ -35,7 +33,8 @@ function categKontr(){
     return true;
 
 }
-function upCategKontr(){
+
+function upCategKontr() {
     let username = document.getElementById("categname2").value;
     let error = document.getElementById("upcateg-error");
     if (!username) {
@@ -68,7 +67,6 @@ function userKontr() {
 }
 
 
-
 function passKontr() {
     let password = document.getElementById("password_reg").value;
     let com_password = document.getElementById("cam_password_reg").value;
@@ -79,7 +77,7 @@ function passKontr() {
     } else if (password.length < 3 || password.length > 30) {
         error.innerHTML = "Password field should be between 3 and 30 characters!";
         return false;
-    }else if(password !== com_password) {
+    } else if (password !== com_password) {
         error.innerHTML = "Password does not match!";
         return false;
     }
@@ -108,7 +106,7 @@ function ageKontr() {
     if (!age) {
         error.innerHTML = "Age field is empty!";
         return false;
-    } else if (age < 14 ) {
+    } else if (age < 14) {
         error.innerHTML = "Age should be greater then 14 years old!";
         return false;
     }
@@ -117,7 +115,6 @@ function ageKontr() {
     return true;
 
 }
-
 
 
 function mailKontr() {
@@ -143,41 +140,71 @@ function mailKontr() {
 
 
 
+function mailKont() {
+    let email = document.getElementById("maill").value;
+    let error = document.getElementById("email-errorr");
+    if (!email) {
+        error.innerHTML = "Email field is empty!";
+        return false;
+    } else {
+        // Remove all illegal characters from email
+        email = email.replace(/[^\w\d@._-]+/gi, "");
+        // Validate email using a regular expression
+        const emailRegex = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+        if (!emailRegex.test(email)) {
+            error.innerHTML = "Invalid email format";
+            return false;
+        }
+    }
+    error.innerHTML = "";
+    console.log("mailjedna");
+    return true;
+}
+
 function myFunction() {
     let i = localStorage.getItem("dark");
     let rez = document.querySelector(".linktheme");
     let image = document.querySelector("#rezim");
-    if (i == 1){
+    if (i == 1) {
         localStorage.setItem("dark", 0);
-        rez.href = "../styles/root_black.css" ;
+        rez.href = "../styles/root_black.css";
         image.src = "../images/zlustymesic.jpeg";
-    } else{
+    } else {
         localStorage.setItem("dark", 1);
         rez.href = "../styles/root_white.css";
         image.src = "../images/cernymesic.jpeg";
     }
 }
 
-function setmyfunction(){
+function setmyfunction() {
     let i = localStorage.getItem("dark");
     console.log(i);
     let image = document.querySelector("#rezim");
     let rez = document.querySelector(".linktheme");
-    if (i == 1){
+    if (i == 1) {
         rez.href = "../styles/root_white.css";
         image.src = "../images/cernymesic.jpeg";
-    } else{
+    } else {
         rez.href = "../styles/root_black.css";
         image.src = "../images/zlustymesic.jpeg";
     }
 }
 
 function validateForm() {
+    let validations = [nameKontr(), userKontr(), mailKontr(), ageKontr(), passKontr()];
 
-    return nameKontr() && userKontr() && mailKontr() && ageKontr() && passKontr();
+    return !!validations.every(function (validation) {
+        return validation === true;
+    });
 }
+
 function validateFormm() {
-    return userKontr() && mailKontr() && passKontr();
+
+    let validations = [userKontr(), mailKontr(), passKontr()];
+
+    return !!validations.every(function (validation) {
+        return validation === true;
+    });
 }
 
 setmyfunction();
@@ -185,8 +212,23 @@ let a = document.getElementById("rezim");
 a.addEventListener("click", myFunction);
 
 
-
 let search = document.getElementById("search-input");
-search.addEventListener("keyup", function(){
+search.addEventListener("keyup", function () {
     showResult(search.value);
 });
+
+document.getElementById("back").addEventListener("click", function() {
+    window.history.back();
+});
+
+
+//
+// let sfora = document.getElementsByClassName("fora_div");
+//     Array.from(sfora).forEach(element => {
+//     element.addEventListener("submit", function (event) {
+//         if (!userKontr()) {
+//             event.preventDefault();
+//         }
+//     });
+// });
+

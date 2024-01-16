@@ -5,14 +5,7 @@ include "db.php";
 Connection();
 IsLog();
 
-?>
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <?php include("head.php") ?>
-</head>
-<body>
-<?php
+
 if (isset($_POST["update"])) {
     if ($_POST["csrf_token"] == $_SESSION["csrf_token"]) {
         UpdateFunk();
@@ -27,6 +20,23 @@ if (isset($_POST["pic"])) {
     }
 }
 
+
+if (!isset($_SESSION["csrf_token"])) {
+    try {
+        $_SESSION["csrf_token"] = bin2hex(random_bytes(32));
+    } catch (Exception $e) {
+    }
+}
+
+
+?>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <?php include("head.php") ?>
+</head>
+<body>
+<?php
 include("header.php");
 
 
@@ -44,6 +54,7 @@ include("header.php");
     <table>
         <tr>
             <td>
+                <label for="image"></label>
                 <input type="file" name="image" id="image" alt="Profil pic">
                 <input type="hidden" name="csrf_token" value="<?php echo $_SESSION["csrf_token"]; ?>">
                 <button type="submit" name="pic" class="button">Upload pic</button>
@@ -67,7 +78,7 @@ include("header.php");
     <table class="registrace">
         <tr>
             <td id="neco">Username <label for="fname">
-                    <input type="text" name="username" autocapitalize="on"
+                    <input type="text" name="username" id="fname" autocapitalize="on"
                     <?php  $name = htmlspecialchars($_SESSION["username"]);
                     echo 'value="' .$name .'"'; ?> autofocus placeholder="First name">
                 </label></td>
@@ -117,11 +128,7 @@ include("header.php");
 <div class="main-text">
     <fieldset>
         <?php
-        global $id;
-        global $set;
-        $set = "myacc";
-        $id = 0;
-        PrintForFun($id);
+        PrintForFun("myacc");
 
         ?>
     </fieldset>

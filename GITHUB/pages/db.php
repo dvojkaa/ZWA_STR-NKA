@@ -1,8 +1,31 @@
 <?php
 
 
+// todo  (** znamena uděláno)
+//Html specialcahrs pri vystupu  **
+//get na posilani specifickeho categorie, for **
+//js udelat pole chyb **
+//ukazat scale fotek  nemam
+//podrzet stranku pri vstupu do fora **
+//zpatky predelat update  **
+//phpdoc napsat return hodnoty a kdy parametry **
+//napsat do dokumentace jak je struktura db a jak by mela vypadat  **
+//limit vypisovani  **
+
+
+
+
+if (!isset($_SESSION["csrf_token"])) {
+    try {
+        $_SESSION["csrf_token"] = bin2hex(random_bytes(32));
+    } catch (Exception $e) {
+    }
+}
+
+
 /**
  * Function to establish a connection to the MySQL database.
+ * @return void
  */
     function Connection(){
         global $connection;
@@ -22,9 +45,9 @@
 
 /**
  * Function to check if a user is logged in; redirects to index.php if not.
+ * @return void
  */
     function IsLog(){
-
         if(!isset($_SESSION["class"])){
             header("Location: index.php");
 
@@ -33,6 +56,7 @@
 
 /**
  * Function to add a new forum post to the database.
+ * @return void
  */
     function AddForFun(){
         // Declare global connection variable
@@ -46,8 +70,12 @@
 
         $name = mysqli_real_escape_string($connection, $name);
         $text = mysqli_real_escape_string($connection, $text);
-        $text = htmlspecialchars($text);
-        $name = htmlspecialchars($name);
+
+
+//        $text = htmlspecialchars($text);
+//        $name = htmlspecialchars($name);
+
+
         // Get the current user from the session
         $user = $_SESSION["username"];
 
@@ -99,6 +127,7 @@
 
 /**
  * Function to add a new category to the database.
+ * @return void
  */
 function AddCateg(){
     // Establish connection to MySQL database
@@ -108,7 +137,9 @@ function AddCateg(){
     $name = $_POST["categname"];
 
     $name = mysqli_real_escape_string($connection, $name);
-    $name = htmlspecialchars($name);
+
+//    $name = htmlspecialchars($name);
+
     // Check if $name is not empty
     if($name) {
         // Check if the length of $name is greater than 100 characters
@@ -140,6 +171,7 @@ function AddCateg(){
 
 /**
  * Function to add a new user to the database.
+ * @return void
  */
     function AddFunk(){
         global $connection;
@@ -157,9 +189,9 @@ function AddCateg(){
         $username= mysqli_real_escape_string($connection, $username);
         $mail = mysqli_real_escape_string($connection, $mail);
         
-        $mail = htmlspecialchars($mail);
-        $username = htmlspecialchars($username);
-        $password = htmlspecialchars($password);
+//        $mail = htmlspecialchars($mail);
+//        $username = htmlspecialchars($username);
+//        $password = htmlspecialchars($password);
 
         if($password && $username && $com_password && $age) {
 
@@ -244,6 +276,7 @@ function AddCateg(){
 
 /**
  * Function to handle user login and set session variables.
+ * @return void
  */
     function LogFunk(){
         // Establish connection to MySQL database
@@ -251,7 +284,7 @@ function AddCateg(){
 
         // Get user information from POST request
         $password = $_POST["password"];
-        $mail = $_POST["mail"];
+        $mail = $_POST["maill"];
 
         // Escape special characters in user input to prevent SQL injection attacks
         $password = mysqli_real_escape_string($connection, $password);
@@ -278,8 +311,10 @@ function AddCateg(){
 
 /**
  * Function to update the name of a category in the database.
+ * @return void
  */
 function UpdateCatFun(){
+
     // Establish connection to MySQL database
     global $connection;
 
@@ -325,15 +360,9 @@ function UpdateCatFun(){
 
 
 
-
-
-
-
-
-// tady jsem skoncil
-
 /**
  * Function to update the name and/or text of a forum post in the database.
+ * @return void
  */
 function UpdateForFun()
 {
@@ -356,7 +385,9 @@ function UpdateForFun()
     }
     $name = mysqli_real_escape_string($connection, $name);
     $text = mysqli_real_escape_string($connection, $text);
-    $text = htmlspecialchars($text);
+
+//    $text = htmlspecialchars($text);
+
     // Update forum name if provided
     if($name) {
         try {
@@ -365,7 +396,7 @@ function UpdateForFun()
             mysqli_stmt_bind_param($stmt, 'si', $name, $id);
             $result2 = mysqli_stmt_execute($stmt);
             if ($result2) {
-                echo "Forum name successfully updated!";
+                echo "Forum name successfully updated! ";
             } else {
                 throw new Exception("Error updating fora table: " . mysqli_error($connection));
             }
@@ -394,6 +425,7 @@ function UpdateForFun()
 
 /**
  * Function to update user information in the database.
+ * @return void
  */
     function UpdateFunk()
     {
@@ -494,6 +526,7 @@ function UpdateForFun()
 /**
  * Function to print category options in HTML form.
  * @param string $set - Specifies whether the categories are used for creation or display.
+ * @return void
  */
 function PrintCatFun($set){
     global $connection;
@@ -503,8 +536,8 @@ function PrintCatFun($set){
     if (mysqli_num_rows($categories) > 0) {
 
         while ($category = mysqli_fetch_assoc($categories)) {
-            $categ_id = $category["idcateg"];
-            $categ_name = $category["name"];
+            $categ_id = htmlspecialchars($category["idcateg"]);
+            $categ_name = htmlspecialchars($category["name"]);
 
             if ($set === "create") {
                 echo '<span class="categ_radio">
@@ -538,23 +571,38 @@ function PrintCatFun($set){
 }
 
 
-
-function rintForFun($y) {
+/**
+ * Function to print forum posts based on different scenarios.
+ * @param string $set - Specifies where the forms are displayed.
+ * @return void
+ *
+ */
+function PrintForFun($set) {
     global $connection;
-    global $id;
-    global $set;
-    $id = $y;
+    $place = $_SESSION["place"];
+    $max = mysqli_num_rows(mysqli_query($connection, "SELECT idfora FROM fora "));
+
 
     if ($set === "index") {
-        $formularein = mysqli_query($connection, "SELECT * FROM fora WHERE idfora >= '$id' ORDER BY idfora DESC LIMIT 10");
-        while ($formular = mysqli_fetch_assoc($formularein)) {
-            include("fora.php");
+        if($place <= 0){
+            $place = 0;
+            $_SESSION["place"] = $place;
+        }elseif ($place >= $max) {
+            $place = $max - 10;
+            $_SESSION["place"] = $place;
         }
-    }
+        $formularein = mysqli_query($connection, "SELECT idfora FROM fora ORDER BY idfora DESC LIMIT 10 OFFSET $place");
+
+        while ($row = mysqli_fetch_row($formularein)) {
+            $id = $row[0];
+
+            include("fora.php");
+            }
+        }
 
     if ($set === "myacc" || $set === "categ") {
         $x = 0;
-        $order_by = "ORDER BY idfora DESC";
+        $order_by = "ORDER BY time DESC";
 
         if ($set === "myacc") {
             $user = $_SESSION["username"];
@@ -575,93 +623,9 @@ function rintForFun($y) {
     }
 }
 
-
-
-
-/**
- * Function to print forum posts based on different scenarios.
- * @param int $y - Starting ID for fetching forum posts.
- */
-    function PrintForFun($y)
-    {
-        global $connection;
-        global $id;
-        global $set;
-        global $k;
-        $id = $y;
-        $k = 1;
-        $_SESSION["k"] = $k;
-        $j = 0;
-
-
-
-        if ($set === "index") {
-            for ($x = 0; $x <= 9; $x += 1) {
-
-                $formularein = mysqli_query($connection, "SELECT * FROM fora WHERE idfora = '$id' ORDER BY idfora DESC LIMIT 10");
-                //if (NULL != mysqli_num_rows($formularein)) {
-                    $formular = mysqli_fetch_assoc($formularein);
-                    if ($formular) {
-                        include("fora.php");
-                       // $j = 0;
-                    } else {
-                        $x -= 1;
-                        $j += 1;
-                    }
-                    if ($j === 50) {
-                        echo "That's all";
-                        $k = 0;
-                        $_SESSION["k"] = $k;
-                        break;
-
-                    }
-                $id += 1;
-            }
-        }
-        if ($set === "myacc") {
-            $x = 0;
-            $user = $_SESSION["username"];
-            $formulare = mysqli_query($connection, "SELECT idfora FROM fora WHERE user = '$user' ORDER BY idfora DESC");
-            if(NULL != mysqli_num_rows($formulare)) {
-                $formular = mysqli_fetch_assoc($formulare)["idfora"];
-                while ($formular != null) {
-                    $id = $formular;
-                    $x += 1;
-                    include("fora.php");
-                    if ($x >= mysqli_num_rows($formulare)) {
-                        break;
-                    }
-                    $formular = mysqli_fetch_assoc($formulare)["idfora"];
-                }
-            }
-        }
-
-
-        if ($set === "categ") {
-            $x = 0;
-
-            $categ = $_SESSION["categ"];
-
-            $formulare = mysqli_query($connection, "SELECT idfora FROM fora WHERE categ = '$categ' ORDER BY idfora DESC");
-            if(NULL != mysqli_num_rows($formulare)) {
-                $formular = mysqli_fetch_assoc($formulare)["idfora"];
-
-                while ($formular != NULL) {
-                    $id = $formular;
-                    $x += 1;
-                    include("fora.php");
-                    if ($x >= mysqli_num_rows($formulare)) {
-                        break;
-                    }
-                    $formular = mysqli_fetch_assoc($formulare)["idfora"];
-                }
-            }
-        }
-    }
-
-
 /**
  * Function to delete a category from the database.
+ * @return void
  */
     function DeleteCatFun()
     {
@@ -681,46 +645,49 @@ function rintForFun($y) {
 
 /**
  * Function to delete a forum post from the database.
+ * @return void
  */
 function DeleteForFun()
 {
     global $connection;
     $id = $_POST["id"];
+    
 
-        // Prepare the DELETE statement with a parameterized query
-        $query = "DELETE FROM fora WHERE idfora = $id";
-        $stmt = mysqli_prepare($connection, $query);
+    // Prepare the DELETE statement with a parameterized query
+    $query = "DELETE FROM fora WHERE idfora = $id";
 
-        // Bind the $id variable as an integer parameter to the query
-        mysqli_stmt_bind_param($stmt, "i", $id);
+    // Execute the statement
+    $result = mysqli_query($connection, $query);
 
-        // Execute the statement
-        $result = mysqli_stmt_execute($stmt);
+
 
         if (!$result) {
           // return error
             echo("Error deleting record: " . mysqli_error($connection));
+        }else{
+            header("Location: index.php");
         }
 
 }
 
+
+
+
 /**
  * Function to set a user's profile picture and update the database.
+ * @return void
  */
 function SetPic(){
-
+    //todo Scale the pic
     global $connection;
     $id = $_SESSION["id"];
     $target_dir = "../images/profiles/";
     $target_file = $target_dir . $id .".jpg";
     $uploadOk = 1;
-    $imageFileType = strtolower(pathinfo($target_file,PATHINFO_EXTENSION));
+    $imageFileType = strtolower(pathinfo($_FILES["image"]["name"], PATHINFO_EXTENSION));
 
     if(basename($_FILES["image"]["name"]) != "") {
 
-        if (file_exists($target_file)) {
-            unlink($target_file);
-        }
 
         if ($_FILES["image"]["size"] > 5000000) {
             echo "Sorry, your file is too large.";
@@ -736,6 +703,9 @@ function SetPic(){
         if ($uploadOk == 0) {
             echo "Sorry, your file was not uploaded.";
         } else {
+            if (file_exists($target_file)) {
+                unlink($target_file);
+            }
             if (move_uploaded_file($_FILES["image"]["tmp_name"], $target_file)) {
                 echo "The file " . htmlspecialchars(basename($_FILES["image"]["name"])) . " has been uploaded.";
 
@@ -907,6 +877,7 @@ function userKontr($username){
 /**
  * Function to validate and sanitize the text input.
  * @param string $text - The text input to be validated.
+ * @return void
  */
     function textKontr($text){
         if(htmlspecialchars($text)){

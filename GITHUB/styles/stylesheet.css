@@ -116,7 +116,9 @@ header #login-box > strong {
 #login-box{
     text-align: right ;
     top: 0;
+    /*margin-left: 1000px;*/
     margin-top: -80px;
+    /*position: fixed;*/
 
 }
 
@@ -198,7 +200,7 @@ div strong{
 }
 .registrace input{
     height: 25px;
-    width: 500px;
+    width: 70%;
     margin-right: 10%;
     float: right;
     display: flex;

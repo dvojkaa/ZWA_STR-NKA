@@ -3,15 +3,6 @@ if(isset($_POST["submit"])) {
     LogFunk();
 }
 
-if (!isset($_SESSION["csrf_token"])) {
-    try {
-        $_SESSION["csrf_token"] = bin2hex(random_bytes(32));
-    } catch (Exception $e) {
-    }
-//    echo $_SESSION["csrf_token"];
-}
-
-
 ?>
 
 
@@ -24,7 +15,7 @@ if (!isset($_SESSION["csrf_token"])) {
 
 
                     <form method="post" action="index.php" id="search-form" >
-                        <label for="search">
+                        <label for="search-input">
                             <input type="text" placeholder="Search" name="search" id="search-input"></label>
 <!--                        onkeyup="showResult(this.value)"-->
                             <img src="../images/zlustymesic.jpeg" title="Change your theme" alt="Světly režim" id="rezim">
@@ -58,12 +49,13 @@ if (!isset($_SESSION["csrf_token"])) {
                     <script>
                         let logform = document.getElementById("login-form");
                         logform.addEventListener("submit", function (event) {
-                            if (!mailKontr()) {
+                            if (!mailKont()) {
                                 event.preventDefault();
                             }
                         });
                     </script>
-                    <div class="input-user"><label for="default">E-amil </label><input type="email" required class="reqa" id="default" placeholder="E-mail" autocapitalize="off"  value="" name="mail"></div>
+                    <div class="input-user"><label for="default">E-amil </label>
+                        <input type="email" required class="reqa" id="default" placeholder="E-mail" autocapitalize="off"  value="" name="maill"></div>
                     <div class="input-password"><label for="password">Password </label>
                         <input type="password" id="password" autocapitalize="off" placeholder="Password" required class="reqa" value="" name="password">
                     </div>
