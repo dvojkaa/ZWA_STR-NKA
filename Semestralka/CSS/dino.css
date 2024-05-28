@@ -1,0 +1,320 @@
+
+
+/* CSS pro Chrome D/* CSS pro Chrome Dinosaur Game */
+
+/* Styl pro celé tělo stránky */
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background: linear-gradient(to right, #f0f0f0, #e0e0e0);
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+}
+
+/* Styl pro hlavní nadpis */
+h1 {
+    margin-bottom: 20px;
+    color: #333;
+    font-size: 36px;
+    text-align: center;
+    text-transform: uppercase;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+/* Styl pro status */
+h4 {
+    margin-bottom: 10px;
+    font-size: 20px;
+    color: #555;
+}
+
+/* Styl pro tlačítko start */
+#start {
+    padding: 12px 24px;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    border-radius: 25px;
+    cursor: pointer;
+    transition: background-color 0.5s ease, transform 0.3s ease;
+    font-size: 18px;
+    margin-bottom: 20px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+/* Styl pro tlačítko start při najetí myší */
+#start:hover {
+    background-color: #45a049;
+    transform: translateY(-2px);
+}
+
+/* Styl pro plátno */
+canvas {
+    border: 2px solid #555;
+    background-color: #fff;
+    margin-bottom: 20px;
+    display: none;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Styl pro sekci "How to play" */
+#how-to-play {
+    padding: 20px;
+    opacity: 0;
+    border: 2px solid #007bff;
+    border-radius: 10px;
+    background-color: #fff;
+    margin-bottom: 20px;
+    color: #555;
+    transition: opacity 0.5s ease, max-height 0.5s ease;
+    overflow: hidden;
+    max-width: 400px;
+    max-height: 0;
+    text-align: left;
+}
+
+/* Aktivní stav pro sekci "How to play" */
+#how-to-play.active {
+    opacity: 1;
+    max-height: 400px;
+}
+
+/* Vnitřní styl pro seznam v "How to play" */
+#how-to-play ul {
+    padding-left: 20px;
+}
+
+/* Styl pro nadpis sekce */
+h3 {
+    margin-bottom: 10px;
+    color: #007bff;
+    cursor: pointer;
+    transition: color 0.5s ease, text-shadow 0.5s ease;
+    text-align: center;
+}
+
+/* Styl pro nadpis sekce při najetí myší */
+h3:hover {
+    color: #0056b3;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.2);
+}
+
+/* Styl pro odkazy */
+a {
+    color: #007bff;
+    text-decoration: none;
+    margin-top: 20px;
+    transition: color 0.5s ease, text-shadow 0.5s ease;
+    display: block;
+    text-align: center;
+}
+
+/* Styl pro odkazy při najetí myší */
+a:hover {
+    color: #0056b3; /* Změna barvy textu při najetí */
+    text-decoration: underline; /* Podtržení */
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.2); /* Stín textu */
+}
+
+/* Klíčové snímky pro animaci dinosaurů */
+@keyframes dinoRotate {
+    0% { transform: translateX(0); }
+    50% { transform: translateX(-20px) rotateY(180deg); }
+    100% { transform: translateX(0); }
+}
+
+
+@keyframes dinoRotateFast {
+    0% { transform: translateX(0); }
+    50% { transform: translateX(-20px) rotateY(360deg); }
+    100% { transform: translateX(0); }
+}
+
+/* Společný styl pro dinosaury v rozích s rychlejší animací při najetí myší */
+.dino-top-left:hover,
+.dino-top-right:hover,
+.dino-bottom-left:hover,
+.dino-bottom-right:hover {
+    animation: dinoRotateFast 2s linear infinite; /* Zrychlená animace rotace */
+}
+
+/* Společný styl pro dinosaury v rozích */
+.dino-top-left,
+.dino-top-right,
+.dino-bottom-left,
+.dino-bottom-right {
+    position: fixed;
+    width: 100px;
+    height: auto;
+    animation: dinoRotate 4s linear infinite; /* Animace rotace */
+}
+
+/* Individuální pozicování dinosaurů */
+.dino-top-left {
+    top: 20px;
+    left: 20px;
+}
+
+.dino-top-right {
+    top: 20px;
+    right: 20px;
+}
+
+.dino-bottom-left {
+    bottom: 20px;
+    left: 20px;
+}
+
+.dino-bottom-right {
+    bottom: 20px;
+    right: 20px;
+}
+
+/*!* CSS pro Chrome Dinosaur Game *!*/
+
+/*body {*/
+/*    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;*/
+/*    background-color: #f0f0f0;*/
+/*    margin: 0;*/
+/*    padding: 0;*/
+/*    display: flex;*/
+/*    flex-direction: column;*/
+/*    align-items: center;*/
+/*    justify-content: center;*/
+/*    height: 100vh;*/
+/*}*/
+
+/*h1 {*/
+/*    margin-bottom: 20px;*/
+/*    color: #333;*/
+/*}*/
+
+/*#status {*/
+/*    margin-bottom: 10px;*/
+/*    font-size: 18px;*/
+/*    color: #555;*/
+/*}*/
+
+/*#start {*/
+/*    padding: 10px 20px;*/
+/*    background-color: #4CAF50;*/
+/*    color: white;*/
+/*    border: none;*/
+/*    border-radius: 5px;*/
+/*    cursor: pointer;*/
+/*    transition: background-color 0.3s ease;*/
+/*}*/
+
+/*#start:hover {*/
+/*    background-color: #45a049;*/
+/*}*/
+
+/*canvas {*/
+/*    border: 2px solid #555;*/
+/*    background-color: #fff;*/
+/*    margin-bottom: 20px;*/
+/*    display: none;*/
+/*}*/
+
+/*#how-to-play {*/
+/*    padding: 10px;*/
+/*    opacity: 0;*/
+/*    border: 2px solid #007bff;*/
+/*    border-radius: 5px;*/
+/*    background-color: #fff;*/
+/*    margin-bottom: 20px;*/
+/*    color: #555;*/
+/*    -webkit-transition: opacity 0.5s ease;*/
+/*    -moz-transition: opacity 0.5s ease;*/
+/*    -o-transition: opacity 0.5s ease;*/
+/*    transition: opacity 0.5s ease;*/
+/*    overflow: hidden;*/
+/*}*/
+
+/*#how-to-play.active {*/
+/*    transition:  opacity 0.5s ease;*/
+/*    -webkit-transition: opacity 0.5s ease;*/
+/*    -moz-transition: opacity 0.5s ease;*/
+/*    -o-transition: opacity 0.5s ease;*/
+/*    opacity: 100%;*/
+/*    display: block;*/
+/*}*/
+
+/*#how-to-play-content {*/
+/*    margin-bottom: 10px;*/
+/*    color: #777;*/
+/*    transition: opacity 0.3s ease;*/
+/*    -webkit-transition: opacity 0.5s ease;*/
+/*    -moz-transition: opacity 0.5s ease;*/
+/*    -o-transition: opacity 0.5s ease;*/
+/*    opacity: 0;*/
+/*}*/
+
+/*#how-to-play.active #how-to-play-content {*/
+/*    opacity: 1;*/
+/*}*/
+
+/*h3 {*/
+/*    margin-bottom: 10px;*/
+/*    color: #007bff;*/
+/*    cursor: pointer;*/
+/*    transition: color 0.5s ease;*/
+/*}*/
+
+/*h3:hover {*/
+/*    color: #0056b3;*/
+/*}*/
+
+/*a {*/
+/*    color: #007bff;*/
+/*    text-decoration: none;*/
+/*    margin-top: 20px;*/
+/*    transition: color 0.5s ease;*/
+/*}*/
+
+/*a:hover {*/
+/*    color: #0056b3;*/
+/*    text-decoration: underline;*/
+/*}*/
+
+
+/*@keyframes dinoRotate {*/
+/*    0% { transform: translateX(0); }*/
+/*    50% { transform: translateX(-20px) rotateY(180deg); }*/
+/*    100% { transform: translateX(0); }*/
+/*}*/
+
+/*.dino-top-left {*/
+/*    position: fixed;*/
+/*    top: 20px;*/
+/*    left: 20px;*/
+/*    animation: dinoRotate 4s linear infinite;*/
+/*}*/
+
+/*.dino-top-right {*/
+/*    position: fixed;*/
+/*    top: 20px;*/
+/*    right: 20px;*/
+/*    animation: dinoRotate 4s linear infinite;*/
+/*}*/
+
+/*.dino-bottom-left {*/
+/*    position: fixed;*/
+/*    bottom: 20px;*/
+/*    left: 20px;*/
+/*    animation: dinoRotate 4s linear infinite;*/
+/*}*/
+
+/*.dino-bottom-right {*/
+/*    position: fixed;*/
+/*    bottom: 20px;*/
+/*    right: 20px;*/
+/*    animation: dinoRotate 4s linear infinite;*/
+/*}*/
+
+
+
