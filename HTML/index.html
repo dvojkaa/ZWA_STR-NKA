@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chrome Dinosaur Game</title>
+    <link rel="stylesheet" href="../CSS/stylesheet.css">
+    <link rel="stylesheet" href="../CSS/dino.css">
+    <link rel="icon" href="data:;base64,iVBORw0KGgo=">
+
+
+</head>
+
+<body>
+<img src="../img/dino.png" alt="Dinosaur" class="dino-top-left">
+<img src="../img/dino.png" alt="Dinosaur" class="dino-top-right">
+<img src="../img/dino.png" alt="Dinosaur" class="dino-bottom-left">
+<img src="../img/dino.png" alt="Dinosaur" class="dino-bottom-right">
+
+
+
+<h1>Chrome Dinosaur Game</h1>
+<h4 id="status">Status: </h4>
+<button type="button" id="start">Start</button>
+<canvas id="board" width="750" height="250"></canvas>
+<h3 onclick="toggleHowToPlay()">How to play</h3>
+<div id="how-to-play" >
+    <ul>
+        <li>WASD/arrows = movement</li>
+        <li>SPACE = jump</li>
+        <li>R = resets game</li>
+        <li>ENTER = Escape</li>
+    </ul>
+</div>
+<a href="score.php">Save score/See others</a>
+<a href="dino.php">Try</a>
+
+<script src="../JS/dinoOOP.js"></script>
+<script src="../JS/settings.js"></script>
+</body>
+</html>
