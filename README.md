@@ -1,10 +1,23 @@
-# Webové aplikace
-Semestrální práce na hodinu na vysoké škole (HTML, CSS, JS, PHP)
+# 🌐 Webové aplikace
 
-Zatím jsem vytvořil dvě webové aplikace
+Tato semestrální práce vznikla v rámci předmětu **Webové aplikace**.  
+Obsahuje webovou aplikaci vytvořenou pomocí **HTML**, **CSS**, **JavaScriptu** a **PHP**.
 
-Fórum je online na této adrese :
-https://zwa.toad.cz/~krativoj/Vojta/ZWA/pages/index.php
+## 🏍️ Fórum pro motorkáře
 
-Dino game je online na této adrese :
-https://zwa.toad.cz/~krativoj/Vojta/KAJ/Semestralka/HTML/
+Jednoduché komunitní fórum zaměřené na motorkáře.  
+Uživatelé se mohou zaregistrovat, přihlásit, zakládat témata, odpovídat a komunikovat mezi sebou.
+
+🔗 Online verze:  
+[https://zwa.toad.cz/~krativoj/Vojta/ZWA/pages/index.php](https://zwa.toad.cz/~krativoj/Vojta/ZWA/pages/index.php)
+
+### Hlavní funkce:
+- Registrace a přihlášení uživatele
+- Přidávání nových témat a příspěvků
+- Základní validace vstupů
+- Práce s databází v PHP (MySQL)
+
+
+---
+
+> 🎓 Semestrální projekt – vysoká škola / předmět **ZWA (Základy webových aplikací)**
