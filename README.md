@@ -1,7 +1,7 @@
 # 🌐 Webové aplikace
 
 Tato semestrální práce vznikla v rámci předmětu **Webové aplikace**.  
-Obsahuje webovou aplikaci vytvořenou pomocí **HTML**, **CSS**, **JavaScriptu** a **PHP**.
+Obsahuje dvě samostatné webové aplikace vytvořené pomocí **HTML**, **CSS**, **JavaScriptu** a **PHP**.
 
 ## 🏍️ Fórum pro motorkáře
 
@@ -17,6 +17,18 @@ Uživatelé se mohou zaregistrovat, přihlásit, zakládat témata, odpovídat a
 - Základní validace vstupů
 - Práce s databází v PHP (MySQL)
 
+## 🦖 Dino Game
+
+Jednoduchá webová hra inspirovaná známou Google Chrome "offline" hrou s dinosaurem.
+
+🔗 Online verze:  
+[https://zwa.toad.cz/~krativoj/Vojta/KAJ/Semestralka/HTML/](https://zwa.toad.cz/~krativoj/Vojta/KAJ/Semestralka/HTML/)
+
+### Hlavní vlastnosti:
+- Ovládání pomocí mezerníku
+- Zvyšující se obtížnost
+- Animace a jednoduchá kolizní logika
+- Čistý HTML/CSS/JS bez frameworků
 
 ---
 
